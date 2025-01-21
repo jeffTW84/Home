@@ -3055,24 +3055,34 @@
       object-fit: cover;
     }
 
+    .image-container .centered-header {
+      position: absolute;
+      top: 50%;
+      left: 20%;
+      transform: translate(-10%, -50%);
+      color: white;
+      font-size: large;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
     .image-container .centered-text {
       position: absolute;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      left: 20%;
+      transform: translate(-10%, -50%);
       color: white;
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 18px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
   </style>
   <script>"use strict";
-
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('/sw.js');
       });
-    }</script>
+    }
+  </script>
 </head>
 
 <body class="x  x-fonts-josefin-slab  x-fonts-fjalla-one">
@@ -3362,8 +3372,13 @@
                     <div data-ux="GridCell"
                       class="x-el x-el-div c1-1 c1-2 c1-6n c1-3w c1-4z c1-6x c1-x c1-2p c1-6y c1-2r c1-6z c1-y c1-70 c1-6i c1-b c1-c c1-71 c1-72 c1-73 c1-74 c1-75 c1-76 c1-d c1-77 c1-78 c1-e c1-f c1-g">
                       <div class="image-container">
-                        <img src="https://intellimotionmatrix.com/assets/mangogo.png" alt="背景圖片"> <!-- 替換為你的圖片路徑 -->
-                        <div class="centered-text">這是圖片中央的文字</div>
+                        <img src="https://jeffTW84.github.io/Home/assets/img/mangogo.png" alt="背景圖片"> <!-- 替換為你的圖片路徑 -->
+                        <div class="centered-header">
+                          <p style="margin:0">動作捕捉外掛</p>
+                        </div>
+                        <div class="centered-text">
+                          <p style="margin:0">若您的動捕軟體有失真問題，此軟體能讓您手動修正。</p>
+                        </div>
                       </div>
                     </div>
                   </div>
