@@ -1,260 +1,397 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智動矩陣 - 公司官網</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Noto Sans TC', sans-serif;
-            color: rgb(197, 197, 197);
-            background-color: #000;
-            overflow-x: hidden;
-        }
-        .header {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            overflow: hidden;
-        }
-        .header-slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        .header-slideshow iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: none;
-        }
-        .header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-        .slideshow__slide-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%);
-            z-index: 2;
-            pointer-events: none;
-        }
-        .header > div {
-            position: absolute;
-            z-index: 3;
-        }
-        .header h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            font-family: 'Raleway', sans-serif;
-        }
-        .header p {
-            font-size: 1.5rem;
-            font-family: 'Raleway', sans-serif;
-        }
-        .section {
-            padding: 5rem 2rem;
-            color: rgb(197, 197, 197);
-        }
-        .section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-            font-family: 'Raleway', sans-serif;
-        }
-        .product {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
-        .product-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            width: 300px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-        }
-        .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-        }
-        .product-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-        }
-        .product-card h3 {
-            margin: 0.5rem 0;
-            font-size: 1.5rem;
-            font-family: 'Raleway', sans-serif;
-        }
-        .product-card p {
-            font-size: 1rem;
-            opacity: 0.8;
-            font-family: 'Raleway', sans-serif;
-        }
-    </style>
-    <style>
-      .fixed-banner {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 80px; /* 初始高度 */
-          background: black;
-          z-index: 9999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 1.5rem;
-          font-family: 'Raleway', sans-serif;
-          transition: height 0.3s ease, font-size 0.3s ease;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智動矩陣 - 公司官網</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      color: rgb(197, 197, 197);
+      background-color: #000;
+      overflow-x: hidden;
+    }
+
+    .header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .header-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .header-slideshow iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none;
+    }
+
+    .slideshow__slide-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgb(0, 0, 0) 80px, rgba(0, 0, 0, 0.4) 80px);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .header>div {
+      position: absolute;
+      z-index: 4;
+    }
+
+    .header h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .header p {
+      font-size: 1.5rem;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .section {
+      padding: 5rem 2rem;
+      color: rgb(197, 197, 197);
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: rgb(220, 20, 60);
+      font-family: 'Raleway', sans-serif;
+    }
+  </style>
+  <style>
+    .product {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      width: 300px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+
+    .product-card h3 {
+      margin: 0.5rem 0;
+      font-size: 1.5rem;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .product-card p {
+      font-size: 1rem;
+      opacity: 0.8;
+      font-family: 'Raleway', sans-serif;
+    }
+  </style>
+  <style>
+    .fixed-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      /* 初始高度 */
+      background: black;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-family: 'Raleway', sans-serif;
+      transition: height 0.3s ease, font-size 0.3s ease;
+    }
+
+    .fixed-banner.shrink {
+      height: 50px;
+      /* 滑動後縮小的高度 */
+      font-size: 1.2rem;
+      /* 滑動後的字體大小 */
+    }
+
+    .fixed-banner .highlight {
+      font-size: 2rem;
+      /* 特別放大的字體大小 */
+      font-weight: bold;
+      color: red;
+      /* 特別標記的顏色 */
+      margin: 0 0.3rem;
+      /* 與周圍文字保持間距 */
+    }
+
+    .fixed-banner a {
+      color: white;
+      /* 固定連結字體顏色 */
+      text-decoration: none;
+      /* 移除底線 */
+    }
+
+    .fixed-banner a:visited {
+      color: white;
+      /* 點擊過後的顏色 */
+    }
+
+    .fixed-banner a:hover {
+      color: rgb(127, 127, 127);
+      /* 滑鼠懸停時的顏色 */
+    }
+
+    .fixed-banner a:active {
+      color: rgb(62, 62, 62);
+      /* 點擊中的顏色 */
+    }
+  </style>
+  <style>
+    .footer {
+      background-color: #111;
+      color: #ccc;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer .company-info {
+      flex: 1 1 40%;
+      text-align: left;
+    }
+
+    .footer .company-info a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer .company-info a:hover {
+      color: #fff;
+    }
+
+    .footer .social {
+      flex: 1 1 28%;
+      text-align: right;
+    }
+
+    .footer .social a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+      transition: all 0.3s ease;
+      animation: neon-glow 1.5s infinite alternate;
+      background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer .social a:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 5px #ff00cc, 0 0 10px #3333ff, 0 0 15px #00ffcc;
+    }
+
+    @keyframes neon-glow {
+      0% {
+        text-shadow: 0 0 5px #ff00cc, 0 0 10px #3333ff, 0 0 15px #00ffcc;
       }
-      .fixed-banner.shrink {
-          height: 50px; /* 滑動後縮小的高度 */
-          font-size: 1.2rem; /* 滑動後的字體大小 */
+      100% {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #3333ff, 0 0 30px #ff00cc;
       }
-      .fixed-banner .highlight {
-          font-size: 2rem; /* 特別放大的字體大小 */
-          font-weight: bold;
-          color: red; /* 特別標記的顏色 */
-          margin: 0 0.3rem; /* 與周圍文字保持間距 */
+    }
+
+    .footer .copyright {
+      text-align: center;
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
       }
-      .fixed-banner a {
-          color: white; /* 固定連結字體顏色 */
-          text-decoration: none; /* 移除底線 */
+
+      50% {
+        transform: translate(10px, 10px);
       }
-      .fixed-banner a:visited {
-          color: white; /* 點擊過後的顏色 */
-      }
-      .fixed-banner a:hover {
-          color: rgb(127, 127, 127); /* 滑鼠懸停時的顏色 */
-      }
-      .fixed-banner a:active {
-          color: rgb(62, 62, 62); /* 點擊中的顏色 */
-      }
-    </style>
+    }
+  </style>
 </head>
+
 <body>
-    <div class="fixed-banner" id="banner">
-      <a href="https://intellimotionmatrix.com/">IntelliMotionMatrix</a> <span class="highlight">X</span> <a href="https://www.instagram.com/dongshangyin/">DongShangYin</a>
+  <div class="fixed-banner" id="banner">
+    <a href="https://intellimotionmatrix.com/">IntelliMotionMatrix</a> <span class="highlight">X</span> <a
+      href="https://www.instagram.com/dongshangyin/">DongShangYin</a>
+  </div>
+  <div class="header">
+    <div class="header-slideshow">
+      <iframe class="lazyload"
+        data-src="https://www.youtube.com/embed/bzUT4k28OHU?autoplay=1&mute=1&loop=1&playlist=bzUT4k28OHU&iv_load_policy=3&disablekb=1&controls=0&playsinline=1&enablejsapi=1"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe class="lazyload"
+        data-src="https://www.youtube.com/embed/0PKs0kbJ6ag?autoplay=1&mute=1&loop=1&playlist=0PKs0kbJ6ag&iv_load_policy=3&disablekb=1&controls=0&playsinline=1&enablejsapi=1"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe class="lazyload"
+        data-src="https://www.youtube.com/embed/5LEiUkhXAEY?autoplay=1&mute=1&loop=1&playlist=5LEiUkhXAEY&iv_load_policy=3&disablekb=1&controls=0&playsinline=1&enablejsapi=1"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
-    <div class="header">
-        <div class="header-slideshow">
-            <iframe class="lazyload" data-src="https://www.youtube.com/embed/bzUT4k28OHU?autoplay=1&mute=1&loop=1&playlist=bzUT4k28OHU&iv_load_policy=3&disablekb=1&controls=0&playsinline=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            <iframe class="lazyload" data-src="https://www.youtube.com/embed/0PKs0kbJ6ag?autoplay=1&mute=1&loop=1&playlist=0PKs0kbJ6ag&iv_load_policy=3&disablekb=1&controls=0&playsinline=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            <iframe class="lazyload" data-src="https://www.youtube.com/embed/5LEiUkhXAEY?autoplay=1&mute=1&loop=1&playlist=5LEiUkhXAEY&iv_load_policy=3&disablekb=1&controls=0&playsinline=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-        <div class="slideshow__slide-overlay"></div>
-        <div>
-            <h1>IMM / DSY</h1>
-            <p>將人工智慧與人類動作的美學結合，為您帶來未來的動態計算解決方案。</p>
-        </div>
+    <div class="slideshow__slide-overlay"></div>
+    <div>
+      <h1>IMM / DSY</h1>
+      <p>將人工智慧與人類動作的美學結合，為您帶來未來的動態計算解決方案。</p>
     </div>
+  </div>
 
-    <script>
-        const lazyloadIframes = document.querySelectorAll('.lazyload');
+  <script>
+    const lazyloadIframes = document.querySelectorAll('.lazyload');
 
-        lazyloadIframes.forEach(iframe => {
-            iframe.src = iframe.dataset.src;
-        });
+    lazyloadIframes.forEach(iframe => {
+      iframe.src = iframe.dataset.src;
+    });
 
-        const iframes = Array.from(lazyloadIframes);
-        let currentVideoIndex = 0;
+    const iframes = Array.from(lazyloadIframes);
+    let currentVideoIndex = 0;
 
-        function playNextVideo() {
-            // Hide the current iframe
-            iframes[currentVideoIndex].style.display = 'none';
+    function playNextVideo() {
+      // Hide the current iframe
+      iframes[currentVideoIndex].style.display = 'none';
 
-            // Move to the next iframe
-            currentVideoIndex = (currentVideoIndex + 1) % iframes.length;
+      // Move to the next iframe
+      currentVideoIndex = (currentVideoIndex + 1) % iframes.length;
 
-            // Show the next iframe
-            iframes[currentVideoIndex].style.display = 'block';
-        }
+      // Show the next iframe
+      iframes[currentVideoIndex].style.display = 'block';
+    }
 
-        // Start by displaying the first iframe
-        iframes[currentVideoIndex].style.display = 'block';
+    // Start by displaying the first iframe
+    iframes[currentVideoIndex].style.display = 'block';
 
-        // Set up interval for switching videos every 5 seconds
-        setInterval(playNextVideo, 5000);
+    // Set up interval for switching videos every 5 seconds
+    setInterval(playNextVideo, 5000);
 
-        // Handle banner shrink on scroll
-        const banner = document.getElementById('banner');
-        let lastScrollTop = 0;
+    // Handle banner shrink on scroll
+    const banner = document.getElementById('banner');
+    let lastScrollTop = 0;
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
 
-            if (scrollTop > lastScrollTop) {
-                // Scrolling down
-                banner.classList.add('shrink');
-            } else {
-                // Scrolling up
-                banner.classList.remove('shrink');
-            }
+      if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        banner.classList.add('shrink');
+      } else {
+        // Scrolling up
+        banner.classList.remove('shrink');
+      }
 
-            lastScrollTop = scrollTop;
-        });
-    </script>
+      lastScrollTop = scrollTop;
+    });
+  </script>
 
-    <section class="section">
-        <h2 style="color: rgb(220, 20, 60);">破解技術門檻 / Breakthrough</h2>
-        <p style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8;">
-            我們發現，目前坊間尚無一套能整合電腦視覺、3D模型分析、解剖學、生物力學及輔具設計與製造的完整訓練系統，這使霹靂舞愛好者在學習初期面臨更高的技術挑戰。因此，我們致力於創造解決方案，為推動這項技術做出貢獻。如果您感興趣，歡迎繼續閱讀。
-        </p>
-    </section>
+  <section class="section">
+    <h2>破解技術門檻 / Breakthrough</h2>
+    <p style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8;">
+      我們發現，目前坊間尚無一套能整合電腦視覺、3D模型分析、解剖學、生物力學及輔具設計與製造的完整訓練系統，這使霹靂舞愛好者在學習初期面臨更高的技術挑戰。因此，我們致力於創造解決方案，為推動這項技術做出貢獻。如果您感興趣，歡迎繼續閱讀。
+    </p>
+  </section>
 
-    <section class="section">
-        <h2 style="color: rgb(220, 20, 60);">服務 / Services</h2>
-        <div class="product">
-            <div class="product-card">
-                <img src="https://jeffTW84.github.io/Home/assets/img/mangogo-pro.png" alt="產品1圖片">
-                <h3>動作捕捉外掛</h3>
-                <p>若您的動捕軟體有失真問題，此軟體能讓您手動修正。</p>
-            </div>
+  <section class="section">
+    <h2>服務 / Services</h2>
+    <div class="product">
+      <div class="product-card">
+        <img src="https://jeffTW84.github.io/Home/assets/img/mangogo-pro.png" alt="產品1圖片">
+        <h3>動作捕捉外掛</h3>
+        <p>若您的動捕軟體有失真問題，此軟體能讓您手動修正。</p>
+      </div>
 
-            <a href="https://ebook.intellimotionmatrix.com/" class="product-card">
-                <img src="https://jeffTW84.github.io/Home/assets/img/ebook-pro.png" alt="產品2圖片">
-                <h3>電子書</h3>
-                <p>我們精研招式並打造系統訓練，助您突破挑戰。</p>
-            </a>
+      <a href="https://ebook.intellimotionmatrix.com/" class="product-card">
+        <img src="https://jeffTW84.github.io/Home/assets/img/ebook-pro.png" alt="產品2圖片">
+        <h3>電子書</h3>
+        <p>我們精研招式並打造系統訓練，助您突破挑戰。</p>
+      </a>
 
-            <a href="https://draco.intellimotionmatrix.com/" class="product-card">
-                <img src="https://jeffTW84.github.io/Home/assets/img/draco-pro.png" alt="產品3圖片">
-                <h3>旋轉訓練裝置</h3>
-                <p>為訓練拋而條件有限的舞者設計，提供您更多機會掌握技巧。</p>
-            </a>
-        </div>
-    </section>
+      <a href="https://draco.intellimotionmatrix.com/" class="product-card">
+        <img src="https://jeffTW84.github.io/Home/assets/img/draco-pro.png" alt="產品3圖片">
+        <h3>旋轉訓練裝置</h3>
+        <p>為訓練拋而條件有限的舞者設計，提供您更多機會掌握技巧。</p>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="company-info">
+        智動矩陣有限公司<br>
+        地址：台灣新北市汐止區新台五路一段95號20樓之6<br>
+        統一編號：95465056<br>
+        聯絡電話：<a href="tel:0963820352">0963-820-352</a><br>
+        電子郵件：<a href="mailto:jeff@intellimotionmatrix.com">jeff@intellimotionmatrix.com</a><br>
+      </div>
+      <div class="social">
+        <a href="https://www.instagram.com/dongshangyin/" target="_blank" style="font-weight: bolder;">FOLLOW US ON INSTAGRAM !</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 IntelliMotionMatrix INC. All rights reserved.
+    </div>
+  </footer>
 </body>
+
 </html>
