@@ -187,6 +187,17 @@
       color: rgb(62, 62, 62);
       /* 點擊中的顏色 */
     }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(10px, 10px);
+      }
+    }
   </style>
   <style>
     .footer {
@@ -259,18 +270,6 @@
       text-align: center;
       font-size: 0.875rem;
       margin-top: 1rem;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translate(0, 0);
-      }
-
-      50% {
-        transform: translate(10px, 10px);
-      }
     }
   </style>
 </head>
